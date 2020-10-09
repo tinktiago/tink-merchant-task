@@ -15,7 +15,8 @@ export const AuthorizationLink = ({ locale, market, scope, ssn }) => {
     "&market=" +
     market +
     "&locale=" +
-    locale;
+    locale +
+    "&test=true";
 
   return <Button href={link}>Connect Bank</Button>;
 };
