@@ -7,24 +7,13 @@ import { Main } from "./Main";
 export const App = () => (
   <Container>
     <Row>
-      <Col>
-        <a
-          href="/"
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-            display: "inline-flex",
-            alignItems: "center",
-            marginTop: 15
-          }}
-        >
-          <span className="circle" />
-          <h2 style={{ margin: 0 }}>Example</h2>
-        </a>
+      <Col className="d-inline-flex align-items-center mt-3">
+        <div className="rounded-circle" style={{ width: "20px", height: "20px" }}></div>
+        <h2 className="m-0 pl-3 text-muted">Fav merchant app</h2>
       </Col>
     </Row>
     <Row className="app">
-      <Col lg={{ size: 8, offset: 2 }} style={{ paddingTop: "70px" }}>
+      <Col md={{ size: 6, offset: 3 }} style={{ paddingTop: "20px" }}>
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/callback" component={Callback} />

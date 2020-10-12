@@ -1,11 +1,12 @@
 ![Platform](https://img.shields.io/badge/platform-web-blue.svg)
 ![Languages](https://img.shields.io/badge/languages-js-brightgreen.svg)
 
-<img src=".github/TinkConnectExample.png" />
 
-# Tink Connect Example
+# Tink Merchant Task
 
-This is an example web app that demonstrates how you can integrate the Tink API to fetch users' account and transaction data.
+This is a web app that integrates with Tink API to fetch users' account and transaction data and analyzes it so your can know what you favorite merchant is, plus other curiosities.
+
+This app was forked from [Tink Connect Example](https://github.com/tink-ab/tink-connect-example).
 
 This app was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app). Other than that, it has been made as simple as possible.
 
@@ -53,7 +54,3 @@ You should be redirected to the client app on `http://localhost:3000/`. The clie
 - Read our [getting started guide](https://docs.tink.com/resources/getting-started)
 - Explore our [resources](https://docs.tink.com/resources/) for tutorials, libraries and demo apps
 - Check out the [Tink API documentation](https://docs.tink.com/api)
-
-## Support
-
-👋 We are continuously working on improving the developer experience of our API offering. [Contact us](https://tinkab.atlassian.net/servicedesk/customer/portal/5) for support, questions or suggestions.

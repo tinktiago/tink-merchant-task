@@ -45,13 +45,11 @@ async function getData(accessToken) {
     categoryData,
     userData,
     accountData,
-    investmentData,
     transactionData
   ] = await Promise.all([
     getCategoryData(accessToken),
     getUserData(accessToken),
     getAccountData(accessToken),
-    getInvestmentData(accessToken),
     getTransactionData(accessToken)
   ]);
 
@@ -59,7 +57,6 @@ async function getData(accessToken) {
     categoryData,
     userData,
     accountData,
-    investmentData,
     transactionData
   };
 }
@@ -106,17 +103,6 @@ async function getAccountData(token) {
   return handleResponse(response);
 }
 
-async function getInvestmentData(token) {
-  const response = await fetch(base + "/investments", {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token
-    }
-  });
-
-  return handleResponse(response);
-}
-
 async function getTransactionData(token) {
   const response = await fetch(base + "/search", {
     method: "POST",
@@ -124,7 +110,10 @@ async function getTransactionData(token) {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token
     },
-    body: JSON.stringify({ limit: 5 })
+    body: JSON.stringify({ "startDate": 1577836800000,
+    "sort": "DATE",
+    "order": "ASC",
+    "limit": 1000 })
   });
 
   return handleResponse(response);

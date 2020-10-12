@@ -2,19 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const emojis = {
-  money: "💰",
+  "waving-hand": "👋",
   chart: "📈",
   "wings-money": "💸",
   tada: "🎉",
-  sad: "😞"
+  sad: "😞",
+  check: "✔️"
 };
 
 const Emoji = ({ type = "" }) => (
-  <h3>
-    <span role="img" aria-labelledby="jsx-a11y/accessible-emoji">
-      {emojis[type]}
-    </span>
-  </h3>
+  <span role="img" aria-labelledby="jsx-a11y/accessible-emoji">
+    {emojis[type]}
+  </span>
 );
 
 Emoji.propTypes = {

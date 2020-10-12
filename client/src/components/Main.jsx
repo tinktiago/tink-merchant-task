@@ -1,70 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
 import { AuthorizationLink } from "./AuthorizationLink";
 import { BasicDropdown } from "./BasicDropdown";
 
 export const Main = () => {
-  const [market, setMarket] = useState("SE");
-  const [locale, setLocale] = useState("en_US");
+  const [market, setMarket] = useState("");
+  const [testProviders, setTestProviders] = useState("");
+
+  useEffect(() => {
+    setMarket("SE");
+  }, [testProviders]);
+
   return (
     <div>
-      <Header text="Hello!" emoji="money" />
+        <Header text="Hejsan!" emoji="waving-hand" />
 
-      <p>We can help you analyze your financial status.</p>
-      <p>
-        Or actually we can’t. We’re just a simple example app. But you can
-        connect your bank to see your account data, transactions and
-        investments!
-      </p>
+        <p className="text-secondary text-justify pt-2">
+          We're to help and let you know your favourite merchant in 2020 and how much you've spent on it. Plus other things.
+        </p>
 
-      <div style={{ padding: "50px 0 10px 0" }}>
-        <BasicDropdown
-          name="Choose a market"
-          items={[
-            "AT",
-            "BE",
-            "DE",
-            "DK",
-            "ES",
-            "FI",
-            "GB",
-            "IT",
-            "NL",
-            "NO",
-            "PT",
-            "SE"
-          ]}
-          onSelect={setMarket}
-          style={{ marginBottom: "30px" }}
+        <p className="text-secondary text-justify">
+          If you want to try the app with a real account select the market and click <em className="text-dark">Connect Bank</em>.
+        </p>
+
+        <p className="text-secondary text-justify">
+          If you just want to see what this app is capable of, select <em className="text-dark">Test</em> under providers. We've selected a test provider for you. For that reason, the only available market to test is Sweden.
+        </p>
+      
+        <div className="pt-4 pb-2">
+          <BasicDropdown
+            name={`Market: ${market}`}
+            items={testProviders === "Real" ? [
+              "SE",
+              "AT",
+              "BE",
+              "DE", 
+              "DK",
+              "ES",
+              "FI",
+              "GB",
+              "IT",
+              "NL",
+              "NO",
+              "PT",
+            ] : [
+              "SE"
+            ]}
+            onSelect={setMarket}
+            style={{ marginBottom: "30px" }}
+          />
+        </div>
+
+        <div className="pt-2 pb-4">
+          <BasicDropdown
+            name={`Providers: ${testProviders}`}
+            items={[
+              "Real",
+              "Test"
+            ]}
+            onSelect={setTestProviders}
+            style={{ marginBottom: "30px" }}
+          />
+        </div>
+
+        <AuthorizationLink
+          scope="accounts:read,transactions:read,investments:read,user:read"
+          market={market}
+          testProviders={testProviders}
         />
-      </div>
-
-      <div style={{ padding: "10px 0 50px 0" }}>
-        <BasicDropdown
-          name="Choose a locale"
-          items={[
-            "da_DK",
-            "de_DE",
-            "en_US",
-            "es_ES",
-            "fi_FI",
-            "fr_FR",
-            "it_IT",
-            "nl_NL",
-            "no_NO",
-            "pt_PT",
-            "sv_SE"
-          ]}
-          onSelect={setLocale}
-          style={{ marginBottom: "30px" }}
-        />
-      </div>
-
-      <AuthorizationLink
-        scope="accounts:read,transactions:read,investments:read,user:read"
-        market={market}
-        locale={locale}
-      />
     </div>
   );
 };

@@ -9,9 +9,8 @@ import PropTypes from "prop-types";
 
 export const BasicDropdown = ({ items, name, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(name);
+  const [value, setValue] = useState(items[0]);
   const toggle = () => setIsOpen(!isOpen);
-  const select = ({ target: { innerText: value } }) => setValue(value);
 
   useEffect(() => {
     setIsOpen(false);
@@ -19,14 +18,14 @@ export const BasicDropdown = ({ items, name, onSelect }) => {
   }, [value, onSelect]);
 
   const dropdownItems = items.map(item => (
-    <DropdownItem onClick={select} key={item}>
+    <DropdownItem onClick={(e) => setValue(item)} key={item}>
       {item}
     </DropdownItem>
   ));
 
   return (
     <Dropdown isOpen={isOpen} toggle={toggle}>
-      <DropdownToggle caret>{value}</DropdownToggle>
+      <DropdownToggle caret block>{name}</DropdownToggle>
       <DropdownMenu>{dropdownItems}</DropdownMenu>
     </Dropdown>
   );

@@ -1,18 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Col, Row } from "reactstrap";
 import Spinner from "./Spinner";
-import AccountsList from "./AccountsList";
-import Investments from "./Investments";
-import Transactions from "./Transactions";
+import Merchant from "./Merchant";
 
 export const FinancialOverview = ({ data, error, loading }) => {
+
   if (error) {
     return <noscript />;
   }
 
   if (loading) {
-    return <Spinner width="50px" image={"./spinner.png"} />;
+    return <Spinner className="m-3" width="50px" image={"./spinner.png"} />;
   }
 
   if (!data) {
@@ -20,13 +18,7 @@ export const FinancialOverview = ({ data, error, loading }) => {
   }
 
   return (
-    <Row>
-      <Col lg={{ size: 6, offset: 3 }}>
-        <AccountsList data={data} />
-        <Investments data={data} />
-        <Transactions data={data} />
-      </Col>
-    </Row>
+    <Merchant data={data} />
   );
 };
 
